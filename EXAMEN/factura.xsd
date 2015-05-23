@@ -1,0 +1,202 @@
+<xsd:schema>
+
+<xsd:element name="factura">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="datos_empresa"/>
+<xsd:element ref="datos_cliente"/>
+<xsd:element ref="datos_factura"/>
+</xsd:sequence>
+<xsd:attribute name="n_fac" type="tipoID"/>
+</xsd:complexType>
+</xsd:element>
+
+<xs:element name="datos_empresa"/>
+  
+<xsd:complexType>
+  
+<xsd:sequence>
+  
+            
+<xsd:element name="nombre" type="tns:facturaType"/>
+          
+<xsd:element name="dir" type="xsd:string"/>
+
+<xsd:element name="ciudad" type="xsd:string"/>
+
+<xsd:element name="provincia" type="xsd:string"/>
+                                
+<xsd:element name="telefono" type="xsd:string"/>
+ 
+<xsd:sequence>
+<xsd:complexType>
+
+
+
+<xs:element name="datos_cliente"/>
+  
+<xsd:complexType>
+  
+<xsd:sequence>
+  
+            
+<xsd:element name="nombre" type="tns:facturaType"/>
+          
+<xsd:element name="dir_envio" type="xsd:string"/>
+
+<xsd:element name="ciudad" type="xsd:string"/>
+
+<xsd:element name="provincia" type="xsd:string"/>
+                                
+<xsd:element name="telefono" type="xsd:string"/>
+ 
+<xsd:sequence>
+<xsd:complexType>
+
+
+
+<xs:element name="factura"/>
+  
+<xsd:complexType>
+  
+<xsd:sequence>
+  
+            
+<xsd:element name="fecha" type="xsd:date"/>
+          
+<xsd:element name="producto" type="xsd:string"/>
+
+<xsd:element name="subtotal" type="xsd:double"/>
+
+<xsd:element name="valor_iva" type="xsd:double"/>
+                                
+<xsd:element name="total" type="xsd:double"/>
+ 
+<xsd:sequence>
+<xsd:complexType>
+
+
+
+<xsd:element name="datos_empresa">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="tns:nombre"/>
+<xsd:element ref="tns:dir"/>
+<xsd:element ref="tns:ciudad"/>
+<xsd:element ref="tns:provincia"/>
+<xsd:element ref="tns:telefono" minOccurs="0" maxOccurs="1"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+
+<xsd:element name="datos_cliente">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="tns:nombre"/>
+<xsd:element ref="tns:dir_env"/>
+<xsd:element ref="tns:ciudad"/>
+<xsd:element ref="tns:provincia"/>
+</xsd:sequence>
+<xsd:attribute name="n_cli" type="tipoID"/>
+</xsd:complexType>
+</xsd:element> 
+
+<xsd:element name="datos_factura">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="fecha"/>
+<xsd:element ref="producto"/>
+<xsd:element ref="subtotal"/>
+<xsd:element ref="valor_iva"/>
+<xsd:element ref="total"/>
+</xsd:sequence>
+<xsd:attribute name="n_ped" type="tipoID"/>
+<xsd:attribute name="porcentaje_iva" type="tipoIVA"/>
+<xsd:attribute name="f_pago" type="tipoFormaPagar" use="required"/>
+<xsd:attribute name="moneda" type="xsd:string" fixed="dolar"/>
+</xsd:complexType>
+</xsd:element>
+
+<xsd:element name="producto">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element ref="cod"/>
+<xsd:element ref="desc"/>
+<xsd:element ref="cant"/>
+<xsd:element ref="precio_promocion"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+
+<xsd:simpleType name="tipoID">
+<xsd:restriction base="xsd:positiveInteger">
+<xsd:totalDigits value="4"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="porcentaje_iva">
+<xsd:restriction base="xsd:positiveInteger">
+<xsd:totalDigits value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="telefono">
+<xsd:restriction base="xsd:string">
+<xsd:length value="2334455"/> 
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="fax">
+<xsd:restriction base="xsd:string">
+<xsd:length value="2667788"/> 
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="formaPagar">
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="EFECTIVO"/> 
+<xsd:enumeration value="TARJETA"/>
+<xsd:enumeration value="CHEQUE"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="cod">
+<xsd:restriction base="xsd:string">
+<xsd:minLength value="5"/>
+<xsd:maxLength value="15"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="des">
+<xsd:restriction base="xsd:string">
+<xsd:minLength value="1"/>
+<xsd:maxLength value="100"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="cant">
+<xsd:restriction base="xsd:string">
+<xsd:minLength value="1"/>
+<xsd:maxLength value="500"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="precio_promocion">
+<xsd:restriction base="xsd:double">
+<xsd:fractionDigits value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="subtotal">
+<xsd:restriction base="xsd:double">
+<xsd:fractionDigits value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+<xsd:simpleType name="valor_iva">
+<xsd:restriction base="xsd:double">
+<xsd:fractionDigits value="2"/>
+</xsd:restriction>
+</xsd:simpleType>
+
+</xsd:schema>

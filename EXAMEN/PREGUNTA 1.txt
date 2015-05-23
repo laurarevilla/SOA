@@ -1,0 +1,4 @@
+El objetivo de Arquitectura Orientada a Servicios es 
+hacer que cada subsistema de una empresa presente sus capacidades
+a través de servicios adecuados, que permitan usar las capacidades de una manera homogénea. 
+Para evita crear interfaces para cada par de sistemas que requieran comunicación.
